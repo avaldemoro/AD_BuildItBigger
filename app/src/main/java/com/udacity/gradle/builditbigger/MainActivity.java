@@ -1,30 +1,18 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import co.asterv.jokeandroidlibrary.DisplayJokeActivity;
-import co.asterv.jokelibrary.Joke;
-
 
 public class MainActivity extends AppCompatActivity {
-    private Joke joke;
-    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        joke = new Joke();
-        intent = new Intent(this, DisplayJokeActivity.class);
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
