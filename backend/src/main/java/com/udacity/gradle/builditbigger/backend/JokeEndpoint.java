@@ -4,6 +4,8 @@ import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 
+import co.asterv.jokelibrary.Joke;
+
 /** An endpoint class we are exposing */
 @Api(
         name = "jokeApi",
@@ -15,9 +17,12 @@ import com.google.api.server.spi.config.ApiNamespace;
         )
 )
 public class JokeEndpoint {
-    @ApiMethod(name = "putJoke")
-    public JokeBean putJoke(JokeBean joke) {
+
+    @ApiMethod(name = "tellJoke")
+    public JokeBean tellJoke() {
+        JokeBean joke = new JokeBean ();
+
+        joke.setJokeData (new Joke().getRandomJoke ());
         return joke;
     }
-
 }

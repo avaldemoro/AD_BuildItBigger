@@ -6,26 +6,33 @@ import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.concurrent.TimeUnit;
+
 import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.fail;
+import static org.hamcrest.core.IsNull.notNullValue;
 
 @RunWith(AndroidJUnit4.class)
 public class NonEmptyStringTest {
-    private static final String LOG_TAG = "NON_EMPTY_STRING_TEST";
 
     @Test
-    public void useAppContext() {
+    public void testJoke() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext ();
 
         String result = null;
-        EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask (appContext);
-        endpointsAsyncTask.execute ();
+
         try {
-            result = endpointsAsyncTask.get ();
-            Log.d (LOG_TAG, "Retrieved a non-empty string successfully: " + result);
+            EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask (appContext);
+            endpointsAsyncTask.execute ();
+            result = endpointsAsyncTask.get (30, TimeUnit.SECONDS);
+            assertNotNull (result, notNullValue());
+            assertTrue(result.length () > 0);
+
         } catch (Exception e) {
-            e.printStackTrace ();
+            fail("Operation timed out");
         }
-        assertNotNull (result);
     }
 }

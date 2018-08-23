@@ -14,10 +14,6 @@ public class Joke {
         jokes[4] = "What do you call a father who is a professional dancer? A step father.";
     }
 
-    public String[] getJokes() {
-        return jokes;
-    }
-
     public String getRandomJoke() {
         return jokes[new Random().nextInt (jokes.length)];
     }

@@ -1,10 +1,14 @@
 package com.udacity.gradle.builditbigger;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import co.asterv.jokeandroidlibrary.DisplayJokeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +41,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        new EndpointsAsyncTask (this).execute();
+        new EndpointsAsyncTask (getApplicationContext ()).execute ();
     }
 }

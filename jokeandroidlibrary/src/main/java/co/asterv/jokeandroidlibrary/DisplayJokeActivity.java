@@ -13,6 +13,11 @@ public class DisplayJokeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_joke);
 
         String joke = getIntent().getStringExtra (JOKE_INTENT);
+
+        if (joke == null) {
+            joke = "Oh no! Joke was null.";
+        }
+
         TextView jokeTV = findViewById (R.id.jokeTextView);
         jokeTV.setText(joke);
     }
